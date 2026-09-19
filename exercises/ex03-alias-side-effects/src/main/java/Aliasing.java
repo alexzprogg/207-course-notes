@@ -39,7 +39,9 @@ public class Aliasing {
      * @param amount the value to add to each element
      */
     public static void addInPlace(int[] arr, int amount) {
-        // TODO: complete
+        for(int i = 0; i<arr.length; i++){
+            arr[i]+=amount;
+        }
     }
 
     /**
@@ -51,7 +53,11 @@ public class Aliasing {
      * @return a new array of the same length, each element increased by amount
      */
     public static int[] addCopy(int[] arr, int amount) {
-        // TODO: complete
-        return new int[1];
+        int[] arr_copy = new int[arr.length]; //Those elements are not references to other objects.
+        for(int i =0; i<arr_copy.length; i++){
+            arr_copy[i] = arr[i]+amount; //because int is primitive; deep copy cus no deeper ref.
+        }
+
+        return arr_copy;
     }
 }
