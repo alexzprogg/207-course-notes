@@ -211,8 +211,8 @@ and we want to be able to run that method.
 So we need to understand how a program is run in Java.
 
 In Python, we can run a single line of code at the shell,
-or we can run an entire module. A Python module is simply the code that exists
-in a single file. When we run a module, the code is executed from top to bottom.
+or we can run an entire module. A **Python module is simply the code that exists
+in a single file.** When we run a module, the code is executed from top to bottom.
 
 In Java, we don't have the concept of a module. Instead, everything is organized
 around classes. When we execute a program in Java, we actually execute a class.
@@ -306,8 +306,8 @@ In Python, when we say `type(stuff)`, we are told the type of the object that
 to an object of any type.
 
 In Java, every value has a type, but so does *every variable*.
-We must specify a variable's type before assigning a value to the variable,
-and its type can never change. This is called _declaring_ the variable.
+We must <mark> specify a variable's type before assigning a value to the variable,
+and its type can never change.</mark> This is called _declaring_ the variable.
 As an example:
 
 ```java
@@ -315,7 +315,7 @@ int i;
 ```
 
 Here we declare a variable called `i` to be of type `int`.
-Space is reserved in memory for this variable, and Java remembers that you
+<mark> Space is reserved in memory for this variable, </mark> and Java remembers that you
 have promised only to assign `int` values to it.
 
 ### 1.2.3. Declaration and Assignment
@@ -329,8 +329,8 @@ int i = 42;
 In our previous example with just `int i;` we would be postponing assigning
 a value to `i` until later. In the meanwhile, the variable's name is known
 to Java, space has been reserved to store its value, and it is given a default
-value. For an `int`, the default value is `0`; for class types,
-it is `null` (the equivalent to Python's `None`).
+value. <mark>For an `int`, the default value is `0`; for class types,
+it is `null` (the equivalent to Python's `None`).</mark>
 
 
 
@@ -339,7 +339,7 @@ Java must keep track of four things associated with each variable:
 
 1. The variable's name, which we provide when we declare the variable.
 2. The variable's type, which we also provide when we declare the variable.
-3. The memory space used to hold the value of the variable.
+3. The <marK> memory space used to hold the value of the variable.
 4. The value of the variable, which can be given using an assignment statement.
 
 The only one of these that can change is the value of the variable.
@@ -401,7 +401,7 @@ public static void main(String[] args) {
 ```
 
 Java gives the error: `"Duplicate local variable i."` This couldn't happen in Python.
-In Python, we never declare variables, we just use them. The first time we use a name,
+<mark> In Python, we never declare variables, we just use them. The first time we use a name,
 Python creates the variable, and the next time we use the same name,
 Python assumes we are referring to the same variable.
 
@@ -436,18 +436,18 @@ the value `1`. You probably learned to draw memory model diagrams where
 these references were unique identifiers, like `id17`. As you will see,
 those diagrams are still going to be incredibly useful when reasoning about Java code.
 
-However, Java is different. It has two kinds of types:
-_reference types_ and _primitive types_. Understanding the difference is
+However, Java is different. It has <mark> two kinds of types:
+_reference types_ and _primitive types_.</marK> Understanding the difference is
 essential for writing correct Java code.
 
 Type `String` is a **reference** type. This is like what you are used to from
 Python. A Java variable cannot hold a `String` value directly inside itself;
-it can only hold a reference to an object of type `String`.
+it can only hold a <mark>reference to an object of type `String`.</mark>
 But type `int` is a **primitive** type. A Java variable can hold an `int` value
 directly inside itself.
 
-Conveniently, the primitive types all begin with a *lowercase* letter,
-and the reference types with an *uppercase* letter. This makes it easy to tell
+Conveniently, the <mark>primitive types all begin with a *lowercase* letter,
+and the reference types with an *uppercase* letter.</mark> This makes it easy to tell
 whether a type is a primitive or a reference type.
 
 #### 1.3.2.1. Primitives and References in Memory
@@ -481,12 +481,12 @@ There are three areas in memory:
 - The static space is where static members of a class are stored.
   We'll learn more about that later.
 
-On the call stack, we have a "stack frame" for the `main` method of class `Simple`,
-which is currently running. In it we have our two variables.
-`age` has the value `21` directly inside it, because `int` is a primitive type.
+On the call stack, we have a <mark>"stack frame" for the `main` method of class `Simple`,
+which is currently running.</mark> In it we have our two variables. <mark>
+`age` has the value `21` directly inside it, because `int` is a primitive type.</mark>
 `name` does not have `"Jude"` directly inside it. Instead, it stores a reference
 to a `String` object that contains the value `"Jude"`. Since we did not write the
-code for class String, we know nothing about what data members it uses to store
+code for <mark>class String</mark>, we know nothing about what data members it uses to store
 its contents. So we just write the value `"Jude"` inside the box.
 This is a perfectly fine abstraction.
 
@@ -502,8 +502,8 @@ if you write down references (you can just make up id values) rather than arrows
 
 ## 1.4. Strings
 ### 1.4.1. Class `String`
-Java has a class `String` that represents sequences of characters.
-Let's create a new string object to represent the text Hello:
+Java has a <mark>class `String`</mark> that represents sequences of characters.
+Let's create a <mark>new string object </mark>to represent the text Hello:
 
 ```java
 String s1 = new String("Hello");
@@ -546,8 +546,8 @@ Java has a special "String Pool" to store the values of string literals.
 For example, if we create a `String` variable by `String s1 = "Hello"` without
 using the `new` keyword, then Java automatically throws the value of the
 string "Hello" into the string pool. Now if we create another string variable
-by `String s2 = "Hello"` without the `new` keyword as well, to avoid excessive memory,
-Java goes to the string pool and looks for this phrase. Since "Hello" has already
+by `String s2 = "Hello"` without the `new` keyword as well, to <mark> avoid excessive memory,
+Java goes to the string pool and looks for this phrase. </mark> Since "Hello" has already
 been added to the string pool, Java makes `s2` point to the same "Hello" string as `s1`.
 In this case, the expression `s1 == s2` will evaluate to `True`, just like in Python.
 
@@ -560,7 +560,7 @@ System.out.println(s1 == s2);
 ```
 
 We will get `false` as the outcome! The reason is that in this case,
-we have created two _instances_ of the `String` class. Hence, since `s1` and `s2`
+we have <mark>created two _instances_ of the `String` class.</mark> Hence, since `s1` and `s2`
 refer to different objects, the result is `false`.
 In summary, be careful with this nuance when comparing values of `String` objects
 as this might lead to opposite results.
@@ -571,10 +571,10 @@ You can refer to the following links for more information on the string pool and
 2. https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5
 
 ### 1.4.2. Strings are Immutable
-Just as in Python, `String` objects in Java are immutable.
+Just as in Python, <mark>`String` objects in Java are immutable.</mark>
 This means that we can never mutate an existing `String` object.
 We *can* perform operations on `String` objects, but rather than change an
-existing `String`, they return a new one.
+existing `String`, they <mark>return a new one.</mark>
 For example, see the documentation for the `concat` method at
 https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#concat-java.lang.String-.
 
@@ -638,7 +638,7 @@ String s = "x";
 ```
 
 There is also a primitive type capable of holding a single character.
-It is called `char`. We must use single quotes when providing a literal value
+It is called `char`. We <mark> must use single quotes</mark> when providing a literal value
 of type `char`:
 
 ```java
@@ -654,7 +654,7 @@ sb.setCharAt(3, 'o');
 ### 1.4.6. Mutating Strings vs. New Strings
 We saw that a `String` is immutable but a `StringBuilder` is mutable.
 We can live without `StringBuilder` objects if we construct a new `String` every
-time we need to make a change. But constructing a new object is slower than
+time we need to make a change. <mark>But constructing a new object is slower than
 modifying an existing one. For example:
 
 ```java
@@ -699,9 +699,9 @@ Classes and interfaces are another kind of abstraction.
 When we write a program that manipulates data —
 tax information, students at a university, it could be almost anything —
 we need to represent that data in our program.
-For example, a `Student` class would have a name and student number but probably not weight and height.
+<mark>For example, a `Student` class would have a name and student number but probably not weight and height.
 Those details are not relevant to the program so we don't need to represent them.
-Class `Student` is an abstraction of a student.
+Class `Student` is an abstraction of a student.</mark>
 
 ### 1.5.1. Instantiating an object
 
@@ -724,10 +724,18 @@ determines which one we are calling by the number and type of the arguments.
 When Java evaluates the expression `new StringBuilder("Viriyakattiyaporn")`,
 it:
 
-- allocates memory for the new object,
-- evaluates the arguments,
+- allocates memory for the new object, 
+    - Here, Class: StringBuilder; Object: StringBuilder Instance
+- evaluates the arguments, 
+   - Here, "Viriyakattiyaporn" evaluates to a String reference (notice; not a primitive)
 - calls the appropriate constructor, and
-- returns a reference to the newly-constructed object.
+  - Java looks for StringBuilder constructor compatible with String
+  - [ StringBuilder object ]
+    contents: "Viriyakattiyaporn"
+- returns a reference to the newly-constructed object. <mark> 
+  - assigns to a reference pointing to a newly created object; e.g.
+  - StringBuilder name = new StringBuilder("Alex"); variable name of type(StringBuilder) 
+  has its value referenced/pointed to the StringBuilder instance. 
 
 We can assign the reference to a variable, as we did above, or use it directly,
 for instance:
@@ -757,8 +765,8 @@ takes a `String`, the `append` method, and the `indexOf` method.
 
 This documentation specifies exactly how client code can interact with the class,
 in this case class `StringBuilder`. We call this the _Application Programming Interface_ or API.
-It tells us what methods we can call, what arguments we must send,
-and what value will be returned. Be sure to bookmark the Java API
+It tells us <mark>what methods we can call, what arguments we must send,
+and what value will be returned.</mark> Be sure to bookmark the Java API
 and refer to it regularly.
 You will find all sorts of Java resources online, but this is the definitive reference
 for the Java API.
@@ -787,17 +795,17 @@ String band = "Arcade Fire";
 // Call an instance method via an instance.
 int size = band.length();
 
-```
-
+``` 
+<mark> length() needs to know which String you mean. Here, it acts on the particular String "Arcade Fire".</mark>
 You may find it helpful to imagine you are asking the object to do something for you.
 For instance, when we write `band.length()` it is like saying
 "Hey band, you're a `String`: tell me your length!".
 
 ### 1.5.4. Class methods
-Some methods are associated not with individual instances of a class,
-but with the class as a whole. We call these "class methods"
-(or "static methods", since they are defined using the keyword `static`).
-We access a class method via the class name. For example:
+Some methods are associated <mark> not with individual instances of a class,
+but with the class as a whole.</mark> We call these "class methods"
+(or <mark>"static methods"</mark>, since they are defined using the keyword `static`).
+We access a class method <mark> via the class name. For example:
 
 ```java
 // Call a class method via the class name.
@@ -815,7 +823,8 @@ Here is an example of using class method `valueOf`:
 int age = 12;
 System.out.println("Age is " + String.valueOf(age));
 ```
-
+<mark> general operation associated with String;
+doesn't need a particular String object. </mark>
 It makes sense to say:
 "Hey `String` class, tell me the `String` value for this integer age".
 It would make less sense to say to a `String` s:
@@ -863,7 +872,7 @@ and when it can confirm that no variables in the program refer to an object,
 it de-allocates that memory, making it available for other uses.
 
 If we know that we don't need an object anymore, we can explicitly drop a reference
-by setting the variable holding the reference to `null`.
+by setting the <mark> variable holding the reference to `null`.</mark>
 This can hasten garbage collection and improve performance,
 but it may also be unnecessary and just make your code needlessly messy.
 There is a good discussion of this on
@@ -899,10 +908,10 @@ int[] numbers;
 declares an array of `int`. We pronounce this statement "`int` array numbers".
 
 Arrays are reference types. This means that when we declare an array such as `numbers`,
-we are creating a variable that will refer to an array.
+we are creating a <mark>variable that will refer to an array.</mark>
 
-Arrays in Java are reference types, meaning the variable doesn’t hold
-the actual data — it holds a reference to an object that contains the data.
+Arrays in Java are reference types, meaning the <mark>variable doesn’t hold
+the actual data</mark> — it holds a reference to an <mark>object that contains the data.</mark>
 So when we declare variable `numbers`, we’re not creating the array itself,
 just a variable that can point to one.
 
@@ -926,8 +935,8 @@ With arrays, we have some special syntax that looks a bit different.
 This syntax mimics the syntax used in languages like C,
 that pre-date object-oriented programming.
 We use the keyword `new` and the name of the type, but rather than round brackets,
-we use **square brackets**. The only argument we need send the constructor is the
-**size** of the array. Continuing with our `int` array `numbers`, we could construct
+we use **square brackets**. The only <mark>argument we need to send the constructor is the
+**size** of the array.</mark> Continuing with our `int` array `numbers`, we could construct
 it as follows:
 
 ```java
@@ -935,7 +944,7 @@ int[] numbers = new int[5];
 ```
 
 An array object now exists in our object space, this object has five spots,
-each spot can hold an `int` and has the default value `0`,
+each spot can hold an `int` and has the <mark> default value `0`,</mark>
 and the variable `numbers` refers to the whole object.
 
 In this case, we have defined the size of the array at the time we wrote the code.
@@ -982,7 +991,7 @@ For example, to assign a value to the integer at position `1`, we could write:
 numbers[1] = 512;
 ```
 
-Since an `int` is primitive, this value `512` is stored directly in the array.
+<mark>Since an `int` is primitive, this value `512` is stored directly in the array.
 
 Array indices start at zero as in many other programming languages.
 So our code did not put `512` in the very first spot; it went into the second spot.
@@ -997,7 +1006,7 @@ forHarry = houses[-3]   # The third element from the end of the list
 enemies = houses[1:2]   # Make a copy of some of the elements by "slicing"
 ```
 
-Java arrays do **not** offer slicing and do not permit negative indices.
+Java arrays <mark>do **not** offer slicing and do not permit negative indices.</mark>
 If we try to access an array element at an index that is not between 0 and
 the array's length minus one, we get an error. For example, this code:
 ```java
@@ -1026,8 +1035,8 @@ you can use a flexible structure such as `ArrayList` instead.
 
 ### 1.6.5.1. Mixing types within an array is made possible by inheritance
 We can use inheritance to get around the restriction that every element
-of an array must have the same type. Every Java class is a descendant of a
-built-in class called `Object`
+of an array must have the same type. <mark>Every Java class is a descendant of a
+built-in class called `Object`</mark>
 (similar to how everything in Python inherits from class `object`).
 So we can simply declare that our array will hold values of type `Object`,
 and then put in any type of `Object` at all. Here's an example:
@@ -1062,8 +1071,8 @@ String s = miscellany[0];
 ```
 
 Of course we know that we put a `String` into that position of the array.
-We can tell Java this by **casting** the `Object` to a `String`, that is,
-telling Java to treat it as a `String`, with the implied promise that when
+We can tell Java this by <mark>**casting** the `Object` to a `String`, that is,
+telling Java to treat it as a `String`</mark>, with the implied promise that when
 Java runs the code, this `Object` will indeed be a `String`.
 Here's what it looks like to cast `miscellany[0]` as a `String`:
 ```java
@@ -1143,8 +1152,8 @@ This can completely change what happens when our code is executed.
 
 ### 1.7.2. With references, we can create aliases
 
-As soon as you create an object, you create the opportunity for two different
-variables to refer to that same object. Here's an example:
+As soon as you create an object, you create the opportunity for <mark>two different
+variables to refer to that same object.</mark> Here's an example:
 
 ```java
 String name = new String("Justin Trudeau");
@@ -1184,7 +1193,7 @@ int answer = number;
 ![Non-aliasing memory model example in Java](images/1.7-2.png)
 
 No objects are created, but more importantly, no references are created.
-Variables `number` and `answer` each contain their own 42.
+<mark>Variables `number` and `answer` each contain their own 42.</mark>
 
 Notice that we cannot produce the same situation in Python
 because it does not have primitive types.
@@ -1215,9 +1224,9 @@ This is the actual state of memory right before the call to `grow`:
 and here is the state after:
 ![Monster aliasing part 2](images/1.7-4.png)
 
-Since `one` and `two` are aliases, changing `two` affects `one`.
+<mark> Since `one` and `two` are aliases, changing `two` affects `one`.</mark>
 More precisely, changing the object that `two` refers to changes
-the object that `one` refers to — since they are the same object!
+the object that `one` refers to — since <mark> they are the same object!</mark>
 
 ### 1.7.4.1. But only if the object is mutable!
 Suppose we have aliases for an object that is immutable,
@@ -1245,12 +1254,12 @@ JUstin TrUdeaU
 
 We did not change `name` by changing `primeMinister`.
 In fact, we didn't change the `String` that `primeMinister` refers
-to — we made a **new** `String`.
+to — we <mark> made a **new** `String`.
 
 ### 1.7.5. Making a copy in order to avoid side effects
 
-We've seen that when two variables are aliases for the same object,
-and the object is mutable, we can have side effects.
+We've seen that <mark>when two variables are aliases for the same object,
+and the object is mutable, we can have side effects.</mark>
 If we want to avoid side effects, instead of making an alias,
 we can make a copy of the object. Here's an example that uses this strategy:
 
@@ -1275,20 +1284,20 @@ Notice that, despite its name, `copy1` doesn't actually refer to a copy of the a
 it is merely a second reference to the array object we already had.
 Changes to the array referenced by `words` show up when you look at the array
 referenced by `copy1` (and vice versa) because they are the *same array*.
-But `copy2` refers to a second array object. Each of its elements contains a copy
+But<mark> `copy2` refers to a second array object. </mark>Each of its elements contains a copy
 of an element of the first array object. Changing `copy2` has no effect on the
 original array, `words`.
 
 ### 1.7.6. Shallow copy vs deep copy
 
-Above, we made what is called a *shallow copy*. We copied the reference stored in
+Above, <mark>we made what is called a *shallow copy*. </mark>We copied the reference stored in
 `words[0]` and put it in `copy2[0]`, copied the reference stored in `words[1]` and
 put it in `copy2[1]`, and so on. But we did not make a copy of the objects that
 `words[0]`, `words[1]` and so on referred to. The result is that, even though
-`words` and `copy2` are separate arrays, they each point to the same five
-`String` objects.
+`words` and `copy2` are separate arrays, <mark>they each point to the same five
+`String` objects.</mark> <mark> CAREFULLY LOOK AT ID 66.
 
-In other words, we have aliasing, but it's at a *deeper* level in the structure.
+In other words, <mark>we have aliasing</mark>, but it's at a *deeper* level in the structure.
 For example, `words[4]` and `copy2[4]` both refer to the same `String` with ID `id14`.
 
 Since string objects are immutable, there is no chance that the aliasing at
@@ -1316,7 +1325,7 @@ To predict the outcome, we again need a clear picture of what is happening in me
 
 ![Shallow copy memory model diagram](images/1.7-6.png)
 
-So changing `copy[1][1]` did change table: it has `-99999` at index `[1][1]`.
+So changing `copy[1][1]` did change table: <MARK>it has `-99999` at index `[1][1]`.
 To avoid this, we would have to make a copy of `table` at *every* level.
 This is called a **deep copy**.
 
